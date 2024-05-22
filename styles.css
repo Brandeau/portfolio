@@ -14,28 +14,108 @@ body {
 
 #main-header {
 
-    background-color: hsl(200 100% 40%);
+    background-color: hsl(270, 68%, 40%);
     color: white;
     font-size: small;
 }
 
-.channels {
-    display: flex;
-    flex-direction: row;
+h1 {
+    margin-block: 0;
+    padding: 20px;
 }
 
 #menu {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+#channels {
     width: 100%;
     text-align: left;
     padding: 0;
 }
 
-#log {
-    display: none;    
+#log{
+    background-image: linear-gradient(
+    to bottom,
+    rgb(248 129 189 / 80%),
+    rgb(253 181 217 / 50%)
+  ), url(/resources/images/background.jpg);
+    background-size: cover;
+    background-repeat: repeat-y;
+    display: none;
+    height: 100%;
+    overflow-y: auto;
+
 }
 
-#log-text p {
+#chat-wrapper{
+    height: -webkit-fill-available;
+}
+
+#chat-header{
+    background-color: #FF3EA5;
+    color: white;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+#chat-header h2{
+    margin: 0;
+    padding: 20px;
+}
+
+#chat-header img{
+    height: 15px;
+    padding: 20px;
+    margin: 7px;
+}
+
+#home-log p {
     display: inherit;
+} 
+
+#question {
+    display: none;
+    background-color: white;
+    padding:20px;
+    width: fit-content;
+    border-radius: 10px 10px 10px 0px;
+    margin: 10px 10px 0px 10px;
+}
+
+#answer{
+    max-width: 70%;
+    text-align: left;  
+    float: inline-end;
+    margin: 10px 10px 70px 10px;
+    display: none;
+    flex-direction: column;
+    align-items: end;
+    background-color: hsl(331, 100%, 96%);
+    padding:20px;
+    border-radius: 10px 10px 0px 10px;
+}
+
+#projects-log p {
+    display: inherit;
+}
+
+#contact-log p {
+    display: inherit;
+}
+
+#input-bar{
+    position: fixed;
+    bottom: 0;
+    background-color: white;
+    margin: 0;
+    padding: 20px;
+    width: 100%;
+    text-align: left;
+    display: none;
 }
 
 ul{
@@ -60,3 +140,20 @@ ul{
 img {
     padding: 10%;
 }
+
+.slideup {
+    animation-duration: 0.5s;
+    animation-name: slideup;
+}
+
+@keyframes slideup {
+    from {
+      margin-top: 100%;
+
+    }
+  
+    to {
+      margin-top: 0%;
+
+    }
+  }
