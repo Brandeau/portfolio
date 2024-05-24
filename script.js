@@ -23,6 +23,10 @@ const contact = "You can contact me here";
 
 const miscellaneousAnswer = "";
 
+/**
+ * Injects the question to the chat window
+ * @param {string} questionText 
+ */
 function renderQuestion(questionText){
 
     if(!nodeExists("question")){
@@ -36,6 +40,10 @@ function renderQuestion(questionText){
     
 }
 
+/**
+ * Injects the answer to the chat window
+ * @param {string} answerText 
+ */
 function renderAnswer(answerText){
 
     if(!nodeExists("answer")){
@@ -49,6 +57,9 @@ function renderAnswer(answerText){
     
 }
 
+/**
+ * Hides the list of chats and opens up a chat window
+ */
 function hideChatList(){
     channels.style.display = "none";
     header.style.display = "none";
@@ -56,6 +67,10 @@ function hideChatList(){
     inputBar.style.display = "block";
 }
 
+/**
+ * Adds a title to the chat page
+ * @param {string} title 
+ */
 function addChatTitle(title){
 
     if(!nodeExists("chat-title")){
@@ -67,6 +82,11 @@ function addChatTitle(title){
     
 }
 
+/**
+ * Checks if node exists on the DOM
+ * @param {string} nodeName 
+ * @returns {boolean}
+ */
 function nodeExists(nodeName){
 
     const node = document.getElementById(nodeName);
@@ -74,6 +94,9 @@ function nodeExists(nodeName){
     return node ? true : false;
 }
 
+/**
+ * Hides the chat and returns to the chat list
+ */
 function hideChats(){
     channels.style.display = "block";
     header.style.display = "block";
@@ -83,6 +106,9 @@ function hideChats(){
     
 }
 
+/**
+ * Removes the previous question and answer if there are any
+ */
 function removePrevious(){
     const question = document.getElementById("question");
     const answer = document.getElementById("answer");
@@ -93,6 +119,10 @@ function removePrevious(){
     if(chatTitle){chatTitle.remove();}
 }
 
+/**
+ * Event handler that opens the chat
+ * @param {MouseEvent} event 
+ */
 function openChat(event){
 
     const clickedElement = event.target;
