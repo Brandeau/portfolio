@@ -2,6 +2,7 @@ const log = document.getElementById("log")
 
 const chatWrapper = document.getElementById("chat-wrapper");
 const chatHeader = document.getElementById("chat-header");
+const chatHeaderImage = document.getElementById("chat-header-image")
 
 const channels = document.getElementById("channels");
 const header = document.getElementById("main-header")
@@ -20,22 +21,32 @@ const githubLink = "Here's the link";
 
 const contact = "You can contact me here";
 
+const miscellaneousAnswer = "";
+
 function renderQuestion(questionText){
-    const question = document.createElement("p");
-    question.textContent = questionText;
-    chatWrapper.append(question);
-    question.id = "question";
-    question.className = "slideup";
-    question.style.display = "flex"
+
+    if(!nodeExists("question")){
+        const question = document.createElement("p");
+        question.textContent = questionText;
+        chatWrapper.append(question);
+        question.id = "question";
+        question.className = "slideup";
+        question.style.display = "flex"
+    }
+    
 }
 
 function renderAnswer(answerText){
-    const answer = document.createElement("p");
-    answer.textContent = answerText;
-    chatWrapper.append(answer);
-    answer.id = "answer";
-    answer.className = "slideup";
-    answer.style.display = "flex";
+
+    if(!nodeExists("answer")){
+        const answer = document.createElement("p");
+        answer.textContent = answerText;
+        chatWrapper.append(answer);
+        answer.id = "answer";
+        answer.className = "slideup";
+        answer.style.display = "flex";
+    }
+    
 }
 
 function hideChatList(){
@@ -46,9 +57,40 @@ function hideChatList(){
 }
 
 function addChatTitle(title){
-    const chatTitle = document.createElement("h2");
-    chatTitle.textContent = `${title}`;
-    chatHeader.append(chatTitle);
+
+    if(!nodeExists("chat-title")){
+        const chatTitle = document.createElement("h2");
+        chatTitle.id = "chat-title";
+        chatTitle.textContent = `${title}`;
+        chatHeader.append(chatTitle);
+    }
+    
+}
+
+function nodeExists(nodeName){
+
+    const node = document.getElementById(nodeName);
+
+    return node ? true : false;
+}
+
+function hideChats(){
+    channels.style.display = "block";
+    header.style.display = "block";
+    log.style.display = "none";
+    inputBar.style.display = "none";
+
+    
+}
+
+function removePrevious(){
+    const question = document.getElementById("question");
+    const answer = document.getElementById("answer");
+    const chatTitle = document.getElementById("chat-title");
+
+    if(question){question.remove();}
+    if(answer) {answer.remove();}
+    if(chatTitle){chatTitle.remove();}
 }
 
 function openChat(event){
@@ -56,15 +98,18 @@ function openChat(event){
     const clickedElement = event.target;
 
     if(clickedElement.closest("#about")){
+        
         hideChatList();
+        removePrevious();
         addChatTitle("About");
-
+        
         setTimeout(() => {
             renderQuestion("Who are you?");
         }, 1000);
         setTimeout(() => {
             renderAnswer(introduction);
         }, 5000);
+
 
     } else if(clickedElement.closest("#projects")){
         hideChatList();
@@ -77,6 +122,16 @@ function openChat(event){
             renderAnswer(githubLink);
         }, 5000);
 
+    } else if(clickedElement.closest("#miscellaneous")){
+        hideChatList();
+        addChatTitle("Miscellaneous");
+
+        setTimeout(() => {
+            renderQuestion("Got anything else to tell me?");
+        }, 1000);
+        setTimeout(() => {
+            renderAnswer(miscellaneousAnswer);
+        }, 5000);
     } else if(clickedElement.closest("#contact")){
         hideChatList();
         addChatTitle("Contact");
@@ -91,5 +146,8 @@ function openChat(event){
 }
 
 channels.addEventListener("click", openChat);
+chatHeaderImage.addEventListener("click", hideChats);
+
+
 
     
