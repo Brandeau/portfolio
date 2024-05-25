@@ -1,0 +1,19 @@
+{
+
+    "whoQ" : "Who are you?",
+
+    "whoA": "My name is Diego Andrade. I'm a professional translator who one day decided to learn coding. I've worked as a freelancer for the past 12 years translating text from English, Portuguese and Japanese. As a beginner programmer I've dabbled in HTML, CSS and JavaScript. I particularly like JS's quirkiness, its unique type of inheritance and its flexibility. I have basic notions of React and MongoDB, as well as a bit of JQuery. I document my code with JSDOC and run tests with Jest. I'm familiarized with git/github, the command line and have a bit of knowledge of agile development.",
+
+    "whatQ": "What can you show me?",
+
+    "whatA": "You can visit my github to check out some of the projects I've made in the journey towards learning code https://github.com/Brandeau",
+
+    "whatElseQ": "What else can you tell me about yourself?",
+
+    "whatElseA": "I know several languages with varying degrees of proficiency (Spanish as a native, proficient in English, conversational in Portuguese, intermediate in Japanese). I like to workout and meditate. I enjoy fiction and love animals",
+
+    "howQ": "How can I get in contact with you?",
+
+    "howA": "You can contact me at the following email: diego.andrade.y@gmail.com"
+
+}

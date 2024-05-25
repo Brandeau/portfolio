@@ -1,3 +1,4 @@
+
 const log = document.getElementById("log")
 
 const chatWrapper = document.getElementById("chat-wrapper");
@@ -8,20 +9,20 @@ const channels = document.getElementById("channels");
 const header = document.getElementById("main-header")
 const inputBar = document.getElementById("input-bar");
 
-const introduction = `My name is Diego Andrade. I'm a professional translator who one day decided to learn coding. I've worked as a freelancer for the past 
-12 years translating text from English, Portuguese and Japanese. 
-As a beginner programmer I've dabbled in HTML, CSS and JavaScript. I particularly
-like JS's quirkiness, its unique type of inheritance and its flexibility. I have basic notions 
-of React and MongoDB, as well as a bit of JQuery. I document my code with JSDOC and run tests with 
-Jest.
-I'm familiarized with git/github, the command line and have a bit of knowledge of agile
-development.`
+const introduction = "";
 
 const githubLink = "Here's the link";
 
 const contact = "You can contact me here";
 
 const miscellaneousAnswer = "";
+
+async function getMessages(){
+    const response = await fetch("/resources/data/messages.json");
+    const messages = await response.json();
+
+    return messages;
+}
 
 /**
  * Injects the question to the chat window
@@ -123,9 +124,10 @@ function removePrevious(){
  * Event handler that opens the chat
  * @param {MouseEvent} event 
  */
-function openChat(event){
+async function openChat(event){
 
     const clickedElement = event.target;
+    const messages = await getMessages();
 
     if(clickedElement.closest("#about")){
         
@@ -134,43 +136,46 @@ function openChat(event){
         addChatTitle("About");
         
         setTimeout(() => {
-            renderQuestion("Who are you?");
+            renderQuestion(messages.whoQ);
         }, 1000);
         setTimeout(() => {
-            renderAnswer(introduction);
+            renderAnswer(messages.whoA);
         }, 5000);
 
 
     } else if(clickedElement.closest("#projects")){
         hideChatList();
+        removePrevious();
         addChatTitle("Projects");
-
+        
         setTimeout(() => {
-            renderQuestion("Got anything to show me?");
+            renderQuestion(messages.whatQ);
         }, 1000);
         setTimeout(() => {
-            renderAnswer(githubLink);
+            renderAnswer(messages.whatA);
         }, 5000);
 
     } else if(clickedElement.closest("#miscellaneous")){
         hideChatList();
+        removePrevious();
         addChatTitle("Miscellaneous");
 
         setTimeout(() => {
-            renderQuestion("Got anything else to tell me?");
+            renderQuestion(messages.whatElseQ);
         }, 1000);
         setTimeout(() => {
-            renderAnswer(miscellaneousAnswer);
+            renderAnswer(messages.whatElseA);
         }, 5000);
     } else if(clickedElement.closest("#contact")){
         hideChatList();
+        removePrevious();
         addChatTitle("Contact");
 
         setTimeout(() => {
-            renderQuestion("How can I get in contact with you?");
+            renderQuestion(messages.howQ);
         }, 1000);
         setTimeout(() => {
-            renderAnswer(contact);
+            renderAnswer(messages.howA);
         }, 5000);
     }
 }
