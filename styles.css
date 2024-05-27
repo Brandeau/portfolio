@@ -17,6 +17,7 @@ body {
     background-color: hsl(270, 68%, 40%);
     color: white;
     font-size: small;
+    text-align: start;
 }
 
 h1 {
@@ -28,6 +29,11 @@ h1 {
     display: flex;
     flex-direction: row;
     width: 100%;
+}
+
+.menu-icons{
+    width: 50px;
+    border-radius: 50%;
 }
 
 #channels {
